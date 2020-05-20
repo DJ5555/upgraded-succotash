@@ -1,4 +1,4 @@
-#Market Share Data Analysis using Discrete Choice
+# Market Share Data Analysis using Discrete Choice
 
 
 We will estimate the effects of certain characteristics of 11 different carbonated soft drinks on consumers' choices of them. Instead of using individual consumer's choice data, we will use the market share data of these soft drinks only. The data file is “Soda_choice_data.csv”.
