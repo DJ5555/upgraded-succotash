@@ -1,0 +1,37 @@
+---
+title: "R Notebook"
+---
+
+
+```{r}
+library(lme4)
+soda = read.csv("Soda_choice_data.csv", header=T)
+soda.ms = soda[soda$ProductID!=0,]
+soda0 = soda$MarketShare[soda$ProductID==0]
+soda0 = matrix(soda0, length(soda0), 11)
+soda.ms$logMktShrRatio = log(soda.ms$MarketShare/as.vector(t(soda0)))
+
+```
+```{r}
+lm2 <-lmer(logMktShrRatio~Brand+Sugar+Caffeine+Promotion+(1|Week),soda.ms)
+summary(lm2)
+```
+B0, B1, B2, B3, B4  are significant.
+
+B0 is the baseline market share ratio of soft drinks of Brand 1 compared to outside product (where customer does NOT buy soft drinks)
+B1: Market share ratio of soft drinks would decrease if the drink belongs to Brand 2.
+B2: Market share ratio of soft drinks would decrease if the drink belongs to Brand 3.
+B3: Higher the sugar level, lower the market share ratio of soft drinks
+B4: If there is caffeine, the market share ratio of soft drinks will increase
+B5: Greater the promotion discount, higher the market share ratio of soft drinks
+
+
+
+
+
+
+
+
+
+
+
